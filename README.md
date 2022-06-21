@@ -1,2 +1,2 @@
 # frontend
-frontend-repository-for-MO.I
+frontend-repository-for-MO.I.
