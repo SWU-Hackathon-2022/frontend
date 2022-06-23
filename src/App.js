@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import MyPage from "./components/MyPage";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/mypage" element={<MyPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
