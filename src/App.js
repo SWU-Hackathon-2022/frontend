@@ -8,6 +8,7 @@ import Message from "./components/Message";
 import MessageReceived from "./components/MessageReceived";
 import MessageSend from "./components/MessageSend";
 import MyPage from "./components/MyPage";
+import AddMusic from "./components/AddMusic";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/message" element={<Message />}></Route>
           <Route path="/message_received/:id" element={<MessageReceived />}></Route>
           <Route path="/message_send" element={<MessageSend />}></Route>
+          <Route path="/add_music" element={<AddMusic />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
