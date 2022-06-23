@@ -85,6 +85,7 @@
   align-content: flex-end;
   justify-content: flex-start;
   align-items: flex-end;
+  margin-bottom: 10px;
 }
 
 .message {
@@ -96,4 +97,56 @@
 .message-bubble__text {
   color: #707070;
   font-size: 12px;
+}
+
+.my-message-bubble {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.my-message {
+  width: 250px;
+  padding: 10px;
+  margin-right: 5px;
+  background-color: black !important;
+  margin-left: 5px;
+}
+
+.my-message-bubble__text {
+  color: #707070;
+  font-size: 12px;
+}
+
+.sendButton {
+  background: none !important;
+  color: black !important;
+  border: none !important;
+  width: fit-content !important;
+}
+
+.sendTextarea {
+  width: 100%;
+  font-size: 12px;
+}
+.sendTextarea__text {
+  width: 100%;
+  padding: 10px !important;
+  font-size: 12px !important;
+}
+
+.message-send--bottom {
+  position: fixed;
+  bottom: 20px;
+}
+
+.end-message--bottom {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  position: fixed;
+  color: #707070;
 }
