@@ -11,6 +11,7 @@ import axios from "axios";
 const cx = classNames.bind(styles);
 
 const Login = () => {
+  const baseURL = "http://49.50.163.18:8080";
   const navigate = useNavigate();
 
   const [nickname, setNickname] = useState("");
@@ -34,6 +35,18 @@ const Login = () => {
 
     // const response = await axios.post("", params);
     navigate("/");
+  };
+
+  const triggerLoginHandler = async () => {
+    const response = await axios.post(
+      `${baseURL}/login`,
+      JSON.stringify({
+        loginId: nickname,
+        password: password,
+      })
+    );
+
+    console.log(response);
   };
 
   return (
@@ -60,19 +73,39 @@ const Login = () => {
                   <Col lg={12} md={12} className="mb-3">
                     {/* Username */}
                     <Form.Label>ID </Form.Label>
-                    <Form.Control type="text" id="nickname" placeholder="아이디를 입력하세요" value={nickname} onChange={handleNickname} required />
+                    <Form.Control
+                      type="text"
+                      id="nickname"
+                      placeholder="아이디를 입력하세요"
+                      value={nickname}
+                      onChange={handleNickname}
+                      required
+                    />
                   </Col>
                   <Col lg={12} md={12} className="mb-3">
                     {/* Password */}
                     <Form.Label>비밀번호 </Form.Label>
-                    <Form.Control type="password" id="password" placeholder="**************" value={password} onChange={handlePassword} required />
+                    <Form.Control
+                      type="password"
+                      id="password"
+                      placeholder="**************"
+                      value={password}
+                      onChange={handlePassword}
+                      required
+                    />
                   </Col>
 
                   <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                     {/* Button */}
-                    <Button variant="primary" type="submit">
-                      로그인
-                    </Button>
+                    <Link to="/MyPage">
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        onClick={triggerLoginHandler}
+                      >
+                        로그인
+                      </Button>
+                    </Link>
                   </Col>
                 </Row>
               </Form>

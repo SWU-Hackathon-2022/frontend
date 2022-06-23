@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import Message from "./components/Message";
 import MessageReceived from "./components/MessageReceived";
 import MessageSend from "./components/MessageSend";
+import MyPage from "./components/MyPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/mypage" element={<MyPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/message" element={<Message />}></Route>
           <Route path="/message_received/:id" element={<MessageReceived />}></Route>
