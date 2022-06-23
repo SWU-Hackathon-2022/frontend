@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import Message from "./components/Message";
+import MessageReceived from "./components/MessageReceived";
+import MessageSend from "./components/MessageSend";
 
 const App = () => {
   return (
@@ -14,6 +17,9 @@ const App = () => {
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/message" element={<Message />}></Route>
+          <Route path="/message_received/:id" element={<MessageReceived />}></Route>
+          <Route path="/message_send" element={<MessageSend />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
