@@ -20,6 +20,7 @@ const MyPage = () => {
       const response = await axios.get(`${baseURL}/mypage`, {
         "Content-Type": "application/json",
         "Cross-Control-Allow-Origin": "*",
+        token: "token1",
       });
       const responseData = await response.data.result;
       getMyPageData(responseData);
