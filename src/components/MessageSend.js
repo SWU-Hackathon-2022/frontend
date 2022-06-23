@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import Header from "./Header";
+import axios from "axios";
 
 const MessageSend = (props) => {
+  const baseURL = "http://49.50.163.18:8080";
+
   const [textarea, setTextarea] = useState("");
   const navigate = useNavigate();
 
@@ -10,20 +14,34 @@ const MessageSend = (props) => {
     setTextarea(event.target.value);
   };
 
-  const sendMessage = async (e) => {
-    console.log("click login");
-    e.preventDefault();
-    var params = new URLSearchParams();
+  // const sendMessage = async (e) => {
+  //   console.log("click login");
+  //   e.preventDefault();
+  //   var params = new URLSearchParams();
 
-    params.append("message", textarea);
+  //   params.append("message", textarea);
 
-    // const response = await axios.post("", params);
+  //   // const response = await axios.post("", params);
+  //   navigate("/message");
+  // };
+
+  const sendMessage = async () => {
+    const response = await axios.post(
+      `${baseURL}/note/composer`,
+      JSON.stringify({
+        musicId: 11,
+        content: textarea,
+      })
+    );
+
+    console.log(response);
     navigate("/message");
   };
 
   return (
     <>
       {" "}
+      <Header></Header>
       <Row className="m-1 align-items-start justify-content-center min-vh-100">
         <Col lg={5} md={5} className="py-8 py-xl-0">
           <Form onSubmit={sendMessage}>
