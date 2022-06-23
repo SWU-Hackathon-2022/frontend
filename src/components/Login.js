@@ -50,11 +50,13 @@ const Login = () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         withCredentials: true,
+        token: "token1",
       }
     );
 
+    console.log(response);
+
     const responseData = await response.data.result;
-    const responseCookieValue = responseData.cookieValue;
     navigate("/mypage");
   };
 

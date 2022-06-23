@@ -7,14 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-if (process.env.NODE_ENV === "development") {
-  // worker.start();
-}
+// if (process.env.NODE_ENV === "development") {
+//   // worker.start();
+// }
 
 root.render(
   <React.StrictMode>
-    <CookiesProvider>
-      <App />
-    </CookiesProvider>
+    <App />
   </React.StrictMode>
 );

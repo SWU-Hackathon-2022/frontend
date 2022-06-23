@@ -17,11 +17,11 @@ const Main = (props) => {
 
   useEffect(() => {
     const getMusicListDataFromServer = async () => {
-      const response = await axios.get(`${baseURL}/music/0`, {
+      const response = await axios.get(`${baseURL}/music/1`, {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        token: "token1",
       });
-
       const responseData = await response.data;
       const responseDataResult = await responseData.result;
 
@@ -35,6 +35,8 @@ const Main = (props) => {
     };
     getMusicListDataFromServer();
   }, []);
+
+  console.log(mainPageData);
 
   return (
     <div className={classes.Main}>
