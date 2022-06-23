@@ -26,6 +26,8 @@ const MessageSend = (props) => {
   // };
 
   const sendMessage = async () => {
+    console.log(textarea);
+
     const response = await axios.post(
       `${baseURL}/note/composer`,
       JSON.stringify({
@@ -35,7 +37,7 @@ const MessageSend = (props) => {
     );
 
     console.log(response);
-    navigate("/message");
+    //navigate("/message");
   };
 
   return (

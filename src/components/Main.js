@@ -6,6 +6,7 @@ import axios from "axios";
 import Header from "./Header";
 
 const Main = (props) => {
+  console.log(props.login);
   const baseURL = "http://49.50.163.18:8080";
   const [mainPageData, setMainPageData] = useState({
     musicThumbnailUrl: "",
