@@ -19,6 +19,7 @@ const Main = (props) => {
     const getMusicListDataFromServer = async () => {
       const response = await axios.get(`${baseURL}/music/0`, {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       });
 
       const responseData = await response.data;

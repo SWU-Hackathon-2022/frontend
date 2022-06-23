@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Cookies } from "react-cookie";
 import { Col, Row, Card, Form, Button, Image } from "react-bootstrap";
 
 import Logo from "../assets/images/logo.png";
@@ -37,16 +38,24 @@ const Login = () => {
     navigate("/");
   };
 
-  const triggerLoginHandler = async () => {
+  const triggerLoginHandler = async (e) => {
+    e.preventDefault();
     const response = await axios.post(
       `${baseURL}/login`,
-      JSON.stringify({
+      {
         loginId: nickname,
         password: password,
-      })
+      },
+      {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        withCredentials: true,
+      }
     );
 
-    console.log(response);
+    const responseData = await response.data.result;
+    const responseCookieValue = responseData.cookieValue;
+    navigate("/mypage");
   };
 
   return (
@@ -68,7 +77,7 @@ const Login = () => {
                 </span>
               </div>
               {/* Form */}
-              <Form onSubmit={loginUser}>
+              <Form onSubmit={triggerLoginHandler}>
                 <Row>
                   <Col lg={12} md={12} className="mb-3">
                     {/* Username */}
@@ -97,15 +106,11 @@ const Login = () => {
 
                   <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                     {/* Button */}
-                    <Link to="/MyPage">
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        onClick={triggerLoginHandler}
-                      >
-                        로그인
-                      </Button>
-                    </Link>
+                    {/* <Link to="/MyPage"> */}
+                    <Button variant="primary" type="submit">
+                      로그인
+                    </Button>
+                    {/* </Link> */}
                   </Col>
                 </Row>
               </Form>
