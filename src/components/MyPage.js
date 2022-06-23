@@ -2,6 +2,7 @@ import classes from "../assets/css/MyPage.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const baseURL = "http://49.50.163.18:8080";
 
@@ -18,9 +19,9 @@ const MyPage = () => {
     const getUserDataFromServer = async () => {
       const response = await axios.get(`${baseURL}/mypage`, {
         "Content-Type": "application/json",
+        "Cross-Control-Allow-Origin": "*",
       });
       const responseData = await response.data.result;
-      console.log(responseData);
       getMyPageData(responseData);
     };
 
@@ -47,13 +48,13 @@ const MyPage = () => {
         <div className={classes.Profile}>
           <div className={classes.Profile__ImgNickname}>
             <img src={require("../assets/images/header__img.png")} alt="임시이미지" />
-            <p className={classes.Profile__Nickname}>{myPageData.nickName}</p>
+            <p className={classes.Profile__Nickname}>{myPageData?.nickName}</p>
             <p className={classes.Profile__NicknameAt}>@user_id</p>
           </div>
         </div>
 
         <div className={classes.Add}>
-          <Link to="/add_music" className={classes.Add__button}>
+          <Link to="/upload_music" className={classes.Add__button}>
             곡 추가
           </Link>
         </div>
@@ -74,12 +75,12 @@ const MyPage = () => {
               </svg>
               <p>주 장르</p>
             </div>
-            <p>{myPageData.genreList.join(", ")}</p>
+            <p>{myPageData?.genreList.join(", ")}</p>
           </div>
         </div>
         <div className={classes.MainGenre__triangle}></div>
         <div className={classes.MyPage__grid}>
-          {myPageData.musicResList.map((el, idx) => {
+          {myPageData?.musicResList.map((el, idx) => {
             return (
               <div className={classes.MyPage__gridItem} key={idx}>
                 <div className={classes.MyPage__gridItemTag}>

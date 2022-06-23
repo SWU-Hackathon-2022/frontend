@@ -37,16 +37,24 @@ const Login = () => {
     navigate("/");
   };
 
-  const triggerLoginHandler = async () => {
+  const triggerLoginHandler = async (e) => {
+    e.preventDefault();
     const response = await axios.post(
       `${baseURL}/login`,
-      JSON.stringify({
+      {
         loginId: nickname,
         password: password,
-      })
+      },
+      {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        withCredentials: true,
+      }
     );
 
-    console.log(response);
+    const responseData = await response.data.result;
+    const responseCookieValue = responseData.cookieValue;
+    navigate("/mypage");
   };
 
   return (
@@ -68,44 +76,26 @@ const Login = () => {
                 </span>
               </div>
               {/* Form */}
-              <Form onSubmit={loginUser}>
+              <Form onSubmit={triggerLoginHandler}>
                 <Row>
                   <Col lg={12} md={12} className="mb-3">
                     {/* Username */}
                     <Form.Label>ID </Form.Label>
-                    <Form.Control
-                      type="text"
-                      id="nickname"
-                      placeholder="아이디를 입력하세요"
-                      value={nickname}
-                      onChange={handleNickname}
-                      required
-                    />
+                    <Form.Control type="text" id="nickname" placeholder="아이디를 입력하세요" value={nickname} onChange={handleNickname} required />
                   </Col>
                   <Col lg={12} md={12} className="mb-3">
                     {/* Password */}
                     <Form.Label>비밀번호 </Form.Label>
-                    <Form.Control
-                      type="password"
-                      id="password"
-                      placeholder="**************"
-                      value={password}
-                      onChange={handlePassword}
-                      required
-                    />
+                    <Form.Control type="password" id="password" placeholder="**************" value={password} onChange={handlePassword} required />
                   </Col>
 
                   <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                     {/* Button */}
-                    <Link to="/MyPage">
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        onClick={triggerLoginHandler}
-                      >
-                        로그인
-                      </Button>
-                    </Link>
+                    {/* <Link to="/MyPage"> */}
+                    <Button variant="primary" type="submit">
+                      로그인
+                    </Button>
+                    {/* </Link> */}
                   </Col>
                 </Row>
               </Form>
