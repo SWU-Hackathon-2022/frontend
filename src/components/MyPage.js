@@ -100,18 +100,22 @@ const MyPage = () => {
         </div>
         <div className={classes.MainGenre__triangle}></div>
         <div className={classes.MyPage__grid}>
-          <div className={classes.MyPage__gridItem}>
-            <div className={classes.MyPage__gridItemTag}>
-              <p>Pop-Rock</p>
-            </div>
-            <img
-              src={require("../assets/images/header__img.png")}
-              alt="샘플 이미지"
-            />
-            <div className={classes.MyPage__gridItemTitle}>
-              <h5>언덕을 오른다</h5>
-            </div>
-          </div>
+          {myPageData.musicResList.map((el, idx) => {
+            return (
+              <div className={classes.MyPage__gridItem} key={idx}>
+                <div className={classes.MyPage__gridItemTag}>
+                  <p>{el.genre}</p>
+                </div>
+                <img
+                  src={require("../assets/images/header__img.png")}
+                  alt="샘플 이미지"
+                />
+                <div className={classes.MyPage__gridItemTitle}>
+                  <h5>{el.musicName}</h5>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
